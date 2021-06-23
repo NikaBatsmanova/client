@@ -1,5 +1,7 @@
 <template>
-  <a class="gradient-button" href="">Submit</a>
+  <div class="row">
+  <input type="submit" value="Submit">
+    </div>
 </template>
 
 <script>
@@ -9,23 +11,19 @@ export default {
 </script>
 
 <style scoped>
-.gradient-button {
-  text-decoration: none;
-  display: inline-block;
+input[type=submit] {
+  background-color: #F08080;
   color: white;
-  padding: 7px 7px;
-  margin: 10px 20px;
-  border-radius: 10px;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background-image: linear-gradient(to right, #FFB6C1 0%, #F08080 51%, #DC143C 100%);
-  background-size: 200% auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-  transition: .5s;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  text-align: center;
+  margin-top: 6px;
 }
 
-.gradient-button:hover {
-  background-position: right center;
+input[type=submit]:hover {
+  background-color: #DC143C;
 }
 </style>

@@ -1,7 +1,11 @@
 <template>
-  <div class="date">
+  <div class="row">
+    <div class="col-25">
     <label>{{ msg }}</label>
-    <input id="dateofbirth" size="30" type="date" v-model="date">
+  </div>
+  <div class="col-75">
+    <input id="dateofbirth" size="50" type="date" v-model="date">
+  </div>
   </div>
 </template>
 
@@ -15,17 +19,5 @@ export default {
 </script>
 
 <style scoped>
-label {
-  float:left;
-  padding-right:30px;
-}
-input {  width: 60%;
 
-  margin: 8px 0;
-}
-.date {
-  clear:both;
-  text-align:right;
-  line-height:25px;
-}
 </style>

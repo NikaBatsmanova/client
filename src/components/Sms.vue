@@ -1,8 +1,10 @@
 <template>
-  <div class="sms">
-    <input id="sms" size="30" type="checkbox">
-    <label>Не отправлять СМС</label>
-  </div>
+  <div class="row">
+    <div class="col-25"><label>Не отправлять СМС</label>
+    </div>
+    <div class="col-75">
+      <input id="sms" size="5" type="checkbox">
+    </div>  </div>
 </template>
 
 <script>
@@ -15,17 +17,5 @@
 </script>
 
 <style scoped>
-label {
-  float:left;
-  padding-right:30px;
-}
-input {
 
-  margin: 8px 0;
-}
-.sms {
-  clear:both;
-  text-align:right;
-  line-height:25px;
-}
 </style>

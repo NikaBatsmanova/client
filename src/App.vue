@@ -1,27 +1,17 @@
 <template>
+  <div>
   <div id="wrapper">
-    <div id="header-wrapper">
-      <header>
-        <div id="logo">
-
-        </div>
-        <menu>
-          <ul>
-            <li><a href="index.html">Тестовое задание на позицию Junior FrontEnd Developer.</a></li>
-          </ul>
-        </menu>
-      </header>
-    </div>
-
-    <div id="page-wrapper">
-      <section>
-        <form id="app">
+      <div id="page-wrapper">
+      <section class="container">
+        <form id="val" @submit="checkForm" action="/something" method="post">
+          <div id="app">
             <Surname msg="Фамилия"/>
             <Name msg="Имя"/>
             <Patronymic msg="Отчество"/>
             <DateOfBirth msg="Дата рождения"/>
             <Phone msg="Номер телефона"/>
             <Sex msg="Пол"/>
+            <GroupOfClient msg="Группа клиентов"/>
             <Doctor msg="Лечащий врач"/>
             <Sms msg="Не отправлять СМС"/>
             <p/>
@@ -38,13 +28,14 @@
             <IssuedBy msg="Кем выдан"/>
             <DateOfIssue msg="Дата выдачи"/>
             <Validate type="submit"/>
+          </div>
         </form>
       </section>
     </div>
 
   </div>
-
-
+<Footer/>
+  </div>
 </template>
 
 <script>
@@ -68,10 +59,14 @@ import Number from "@/components/Number";
 import IssuedBy from "@/components/IssuedBy";
 import DateOfIssue from "@/components/DateOfIssue";
 import Validate from "@/components/Validate";
+import GroupOfClient from "@/components/GroupOfClient";
+import Footer from "@/components/Footer";
 
 export default {
-  name: 'PersonalData',
+  el:'#val',
   components: {
+    Footer,
+    GroupOfClient,
     Validate,
     DateOfIssue,
     IssuedBy,
@@ -94,17 +89,46 @@ export default {
     Name
   }
 }
+
+const val = new Vue({
+  el:'#val',
+  data:{
+    errors:[],
+    name:null,
+    surname:null,
+    movie:null
+  },
+  methods:{
+    checkForm:function(e) {
+      if(this.name && this.age) return true;
+      this.errors = [];
+      if(!this.name) this.errors.push("Name required.");
+      if(!this.age) this.errors.push("Age required.");
+      e.preventDefault();
+    }
+  }
+})
 </script>
 
 <style>
+@media screen and (max-width: 1000px) {
+  #app,body, #wrapper, section,  form, input, label,div, select {
+    width: 100%;
+    margin-top: 0;
+    padding: 0px 0px;
+    text-align: left;
+  }
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin: 0 auto;
-  float:left
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .2);
+  background: #ffe8e6;
+  padding: 10%;
+  float:left;
 }
 body {
   margin: 50px 0px 0px 0px;
@@ -114,62 +138,12 @@ body {
   color: #8F8F8F;
 }
 
-header {
-  width: 100%;
-  height: 10%;
-  margin: 0 auto;
-  padding: 0px 0px;
-}
-
-menu {
-  float: right;
-  width: 70%;
-  height: 80px;
-  padding: 20px 40px 0px 0px;
-}
-
-menu ul {
-  width: 100%;
-  float: right;
-  margin: 0;
-  padding: 40px 0px 0px 0px;
-  list-style: none;
-  line-height: normal;
-}
-
-menu li {
-  width: 100%;
-  float: left;
-}
-
-menu a {
-  display: block;
-  margin-left: 1px;
-  padding: 7px 20px 7px 20px;
-  letter-spacing: 1px;
-  text-decoration: none;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Oswald', sans-serif;
-  font-size: 18px;
-  font-weight: 300;
-  color: #e8e2dc;
-}
-
-menu a:hover, menu .current_page_item a {
-  text-decoration: none;
-  background: #F08080;
-  box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, .1);
-  border-radius: 5px;
-  color: #36332E;
-}
 
 section {
   overflow: hidden;
   width: 90%;
   margin: 0px auto;
-  padding: 50px 40px;
-  color: #8F8F8F;
+  padding: 5% 5%;
 }
 
 #wrapper {
@@ -180,14 +154,62 @@ section {
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .2);
 }
 
-#header-wrapper {
-  overflow: hidden;
-  height: 150px;
-  background: #292521;
-}
 form {
   text-align: center;
   margin: 0 auto;
-  width: 40%;
+  width: 50%;
 }
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, input[type=date] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 12px;
+  display: inline-block;
+}
+
+
+.container {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 40%;
+  margin-top: 6px;
+  text-align: left;
+}
+
+.col-75 {
+  float: left;
+  width: 60%;
+  margin-top: 6px;
+  text-align: left;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 1000px) {
+  .col-25, .col-75, form, select, input[type=text], input[type=date] {
+    width: 100%;
+    margin-top: 0;
+
+  }
+}
+
 </style>
