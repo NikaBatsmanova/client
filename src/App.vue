@@ -3,7 +3,7 @@
   <div id="wrapper">
       <div id="page-wrapper">
       <section class="container">
-        <form id="val" @submit="checkForm" action="/something" method="post">
+        <form @submit.prevent="someAction()">
           <div id="app">
             <Surname msg="Фамилия"/>
             <Name msg="Имя"/>
@@ -63,6 +63,11 @@ import GroupOfClient from "@/components/GroupOfClient";
 import Footer from "@/components/Footer";
 
 export default {
+  methods: {
+    someAction() {
+      alert("Новый клиент успешно создан!");
+    },
+  },
   el:'#val',
   components: {
     Footer,
@@ -90,24 +95,7 @@ export default {
   }
 }
 
-const val = new Vue({
-  el:'#val',
-  data:{
-    errors:[],
-    name:null,
-    surname:null,
-    movie:null
-  },
-  methods:{
-    checkForm:function(e) {
-      if(this.name && this.age) return true;
-      this.errors = [];
-      if(!this.name) this.errors.push("Name required.");
-      if(!this.age) this.errors.push("Age required.");
-      e.preventDefault();
-    }
-  }
-})
+
 </script>
 
 <style>
@@ -163,7 +151,7 @@ form {
   box-sizing: border-box;
 }
 
-input[type=text], select, input[type=date] {
+input[type=text], input[type=tel],select, input[type=date] {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -205,7 +193,7 @@ label {
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 1000px) {
-  .col-25, .col-75, form, select, input[type=text], input[type=date] {
+  .col-25, .col-75, form, select, input[type=text], input[type=date], input[type=tel] {
     width: 100%;
     margin-top: 0;
 

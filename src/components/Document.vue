@@ -3,7 +3,7 @@
     <div class="col-25">
     <label>{{ msg }}</label></div>
   <div class="col-75">
-    <select id="document" v-model="selected">
+    <select id="document" v-model="document" required>
       <option disabled value="">Выберите один из вариантов</option>
       <option>Паспорт</option>
       <option>Свидетельство о рождении</option>

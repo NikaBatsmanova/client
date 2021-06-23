@@ -4,7 +4,7 @@
     <label>{{ msg }}</label>
   </div>
   <div class="col-75">
-    <input id="dateofbirth" size="50" type="date" v-model="date">
+    <input id="dateOfBirth" size="50" type="date" v-model="dateOfBirth" required>
   </div>
   </div>
 </template>

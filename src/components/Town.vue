@@ -3,7 +3,7 @@
     <div class="col-25">
     <label>{{ msg }}</label></div>
     <div class="col-75">
-    <input id="town" onkeyup="" placeholder="" size="30" type="text">
+    <input id="town" onkeyup="" placeholder="" size="30" type="text" v-model="town" required>
     </div>  </div>
 </template>
 

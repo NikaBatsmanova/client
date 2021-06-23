@@ -20,7 +20,7 @@ input[type=submit] {
   cursor: pointer;
   float: right;
   text-align: center;
-  margin-top: 6px;
+  margin-top: 12px;
 }
 
 input[type=submit]:hover {

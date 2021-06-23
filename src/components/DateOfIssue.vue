@@ -3,7 +3,7 @@
     <div class="col-25">
     <label>{{ msg }}</label></div>
     <div class="col-75">
-    <input id="dateofbirth" size="30" type="date">
+    <input id="dateOfIssue" size="30" type="date" v-model="dateOfIssue" required>
     </div>  </div>
 </template>
 

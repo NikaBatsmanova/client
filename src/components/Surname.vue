@@ -4,7 +4,7 @@
       <label>{{ msg }}</label>
     </div>
     <div class="col-75">
-      <input autofocus id="surname" onkeyup="" placeholder="" size="30" type="text"  v-model="surname">
+      <input autofocus id="surname" onkeyup="" placeholder="" size="30" type="text"  v-model="surname" required>
     </div>
   </div>
 
